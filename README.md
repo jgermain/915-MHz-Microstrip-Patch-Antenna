@@ -13,6 +13,56 @@ The project also serves as the first stage of a larger personal goal: developing
 
 The antenna was designed for operation near the **915 MHz ISM band** using an inset-fed microstrip transmission line and an FR-4-based PCB substrate.
 
+
+## Project Visuals
+
+### Simulated Return Loss
+
+<p align="center">
+  <img src="HFSS%20Simulation/Patch_Antenna_S11.png"
+       alt="HFSS simulated S11 response"
+       width="700">
+</p>
+
+**Figure 1.** Simulated input reflection coefficient
+showing resonance at 919.6 MHz with S11 = -16.92 dB.
+
+### HFSS Antenna Geometry
+
+<p align="center">
+  <img src="HFSS%20Simulation/HFSS_Model.png"
+       alt="Inset-fed microstrip patch antenna modeled in HFSS"
+       width="700">
+</p>
+
+**Figure 2.** Three-dimensional HFSS model of the
+inset-fed rectangular patch antenna.
+
+### Altium PCB Layout
+
+<p align="center">
+  <img src="PCB/PCB_Layout.png"
+       alt="Two-layer antenna PCB layout in Altium"
+       width="700">
+</p>
+
+**Figure 3.** PCB layout transferring the optimized
+antenna geometry into a two-layer design.
+
+### PCB 3D Rendering
+
+<p align="center">
+  <img src="PCB/PCB_3D_View.png"
+       alt="Three-dimensional antenna PCB rendering"
+       width="700">
+</p>
+
+**Figure 4.** Altium Designer 3D rendering of the
+antenna PCB prior to fabrication.
+
+---
+
+
 ### Project Status
 
 - Analytical antenna design: **Completed**
