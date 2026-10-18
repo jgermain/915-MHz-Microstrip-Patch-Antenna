@@ -41,7 +41,7 @@ inset-fed rectangular patch antenna.
 ### Altium PCB Layout
 
 <p align="center">
-  <img src="PCB/PCB_Layout.png"
+  <img src="PCB/PCB Images/PCB_Layout.png"
        alt="Two-layer antenna PCB layout in Altium"
        width="700">
 </p>
@@ -52,7 +52,7 @@ antenna geometry into a two-layer design.
 ### PCB 3D Rendering
 
 <p align="center">
-  <img src="PCB/PCB_3D_View.png"
+  <img src="PCB/PCB Images/PCB_3D_View.png"
        alt="Three-dimensional antenna PCB rendering"
        width="700">
 </p>
