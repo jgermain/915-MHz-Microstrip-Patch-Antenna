@@ -30,7 +30,7 @@ showing resonance at 919.6 MHz with S11 = -16.92 dB.
 ### HFSS Antenna Geometry
 
 <p align="center">
-  <img src="HFSS%20Simulation/HFSS_Model.png"
+  <img src="HFSS%20Simulation/Patch_Antenna_Simulation.png"
        alt="Inset-fed microstrip patch antenna modeled in HFSS"
        width="700">
 </p>
