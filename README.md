@@ -12,7 +12,7 @@ The antenna was designed using transmission-line theory, modeled and optimized i
 
 The project provided practical experience with RF design, impedance matching, electromagnetic simulation, PCB development, soldering, and RF test equipment.
 
-## Tools and Equipment
+## Tools and Equipment 
 
 **Software**
 - Ansys HFSS — Electromagnetic simulation
