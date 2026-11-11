@@ -1,430 +1,415 @@
 
-# 915 MHz Inset-Fed Microstrip Patch Antenna
-
-**RF Engineering | Antenna Design | Ansys HFSS | Impedance Matching | Altium Designer**
+# 915 MHz Microstrip Patch Antenna
+### Design, Simulation, Fabrication, and Experimental Validation
 
 ## Project Overview
 
-This project focuses on the analytical design, electromagnetic simulation, and PCB implementation of a **915 MHz rectangular microstrip patch antenna**.
+This project focuses on the design, simulation, fabrication, and testing of a 915 MHz inset-fed rectangular microstrip patch antenna operating in the Industrial, Scientific, and Medical (ISM) frequency band.
 
-The primary goal was to gain practical experience in RF antenna design by applying transmission-line and microstrip antenna theory, validating the analytical design through full-wave electromagnetic simulation, and translating the optimized geometry into a manufacturable printed circuit board.
+The goal was to take an antenna from its initial analytical design through full-wave electromagnetic simulation, PCB layout, physical fabrication, and experimental validation.
 
-The project also serves as the first stage of a larger personal goal: developing a wireless communication system that can eventually support digital modulation and more advanced antenna configurations.
+The antenna was designed using transmission-line theory, modeled and optimized in Ansys HFSS, and implemented as a two-layer PCB using Altium Designer. Following fabrication, the antenna was tested using a NanoVNA-H to evaluate its input reflection coefficient (S11) and transmission performance (S21).
 
-The antenna was designed for operation near the **915 MHz ISM band** using an inset-fed microstrip transmission line and an FR-4-based PCB substrate.
+The project provided practical experience with RF design, impedance matching, electromagnetic simulation, PCB development, soldering, and RF test equipment.
 
+## Tools and Equipment
 
-## Project Visuals
+**Software**
+- Ansys HFSS — Electromagnetic simulation
+- Altium Designer — PCB design and layout
+- MATLAB / Python — Data analysis and visualization
 
-### Simulated Return Loss
-
-<p align="center">
-  <img src="HFSS%20Simulation/Patch_Antenna_S11.png"
-       alt="HFSS simulated S11 response"
-       width="700">
-</p>
-
-**Figure 1.** Simulated input reflection coefficient
-showing resonance at 919.6 MHz with S11 = -16.92 dB.
-
-### HFSS Antenna Geometry
-
-<p align="center">
-  <img src="HFSS%20Simulation/Patch_Antenna_Simulation.png"
-       alt="Inset-fed microstrip patch antenna modeled in HFSS"
-       width="700">
-</p>
-
-**Figure 2.** Three-dimensional HFSS model of the
-inset-fed rectangular patch antenna.
-
-### Altium PCB Layout
-
-<p align="center">
-  <img src="PCB/PCB Images/PCB_Layout.png"
-       alt="Two-layer antenna PCB layout in Altium"
-       width="700">
-</p>
-
-**Figure 3.** PCB layout transferring the optimized
-antenna geometry into a two-layer design.
-
-### PCB 3D Rendering
-
-<p align="center">
-  <img src="PCB/PCB Images/PCB_3D_View.png"
-       alt="Three-dimensional antenna PCB rendering"
-       width="700">
-</p>
-
-**Figure 4.** Altium Designer 3D rendering of the
-antenna PCB prior to fabrication.
+**Hardware**
+- NanoVNA-H Vector Network Analyzer
+- Fabricated microstrip patch antenna PCBs
+- Edge-mount SMA connectors
+- Coaxial RF cables
+- Soldering equipment
 
 ---
 
+## 1. Antenna Design
 
-### Project Status
+### Design Specifications
 
-- Analytical antenna design: **Completed**
-- Ansys HFSS modeling and optimization: **Completed**
-- Altium Designer PCB layout: **Completed**
-- PCB fabrication: **Pending**
-- Physical antenna measurements: **Pending**
-
-**Note:** The performance results presented in this repository are from HFSS simulations. The antenna has not yet been physically fabricated or characterized.
-
----
-
-## 1. Project Objectives
-
-- Design a rectangular microstrip patch antenna operating near 915 MHz.
-- Calculate the initial antenna dimensions using analytical microstrip equations.
-- Design a 50-ohm microstrip feed and investigate impedance-matching techniques.
-- Model the antenna using Ansys HFSS.
-- Optimize the resonant frequency and input reflection coefficient.
-- Transfer the optimized antenna dimensions into a two-layer PCB layout.
-- Prepare the design for eventual fabrication and VNA testing.
-- Develop a foundation for future wireless communication experiments.
-
----
-
-## 2. Antenna Design Theory
-
-A rectangular microstrip patch antenna consists of a conductive radiating patch separated from a ground plane by a dielectric substrate.
-
-The patch supports a resonant electromagnetic field distribution, with the fundamental mode occurring when the resonant dimension is approximately one-half of the guided wavelength.
-
-Because some of the electromagnetic field exists in the surrounding air, the antenna's effective dielectric constant differs from the relative permittivity of the substrate itself.
-
-### Initial Patch Width
-
-The initial patch width was calculated using:
-
-$$
-W=\frac{c}{2f_0}\sqrt{\frac{2}{\varepsilon_r+1}}
-$$
-
-Where:
-
-- $W$ = Patch width
-- $c$ = Speed of light
-- $f_0$ = Target resonant frequency
-- $\varepsilon_r$ = Relative dielectric constant
-
-### Effective Dielectric Constant
-
-To account for the fringing electromagnetic fields around the microstrip structure, the effective dielectric constant was estimated as:
-
-$$
-\varepsilon_{eff}=
-\frac{\varepsilon_r+1}{2}
-+
-\frac{\varepsilon_r-1}{2}
-\left(1+\frac{12h}{W}\right)^{-1/2}
-$$
-
-Where $h$ is the substrate dielectric thickness.
-
-### Fringing Field Extension
-
-Fringing fields make the resonant patch electrically longer than its physical length.
-
-The approximate extension at each radiating edge is:
-
-$$
-\Delta L=
-0.412h
-\frac{(\varepsilon_{eff}+0.3)(W/h+0.264)}
-{(\varepsilon_{eff}-0.258)(W/h+0.8)}
-$$
-
-### Patch Length
-
-The effective patch length was determined using:
-
-$$
-L_{eff}=\frac{c}{2f_0\sqrt{\varepsilon_{eff}}}
-$$
-
-The physical patch length was then calculated as:
-
-$$
-L=L_{eff}-2\Delta L
-$$
-
-These equations provided the initial antenna geometry before electromagnetic optimization in HFSS.
-
-### Analytical Design Results
-
-Using a target resonant frequency of 915 MHz, substrate dielectric constant of 4.6, and dielectric thickness of 1.53 mm, the analytical calculations produced:
-
-| Parameter | Calculated Value |
-|---|---:|
-| Design frequency | 915 MHz |
-| Patch width | 97.90 mm |
-| Patch length | 76.23 mm |
-| Effective dielectric constant | 4.452 |
-| Effective patch length | 77.64 mm |
-| Fringing field extension | 0.708 mm |
-| Estimated 50-ohm feed width | 2.85 mm |
-| Initial inset depth | 21.63 mm |
-
-These values served as the starting point for the full-wave electromagnetic simulation.
-
----
-
-## 3. Substrate Selection
-
-The antenna was designed around **Shengyi S1000H TG150**, an FR-4-family PCB laminate.
-
-This material was selected to provide a relatively low-cost and accessible fabrication option while establishing defined dielectric properties for the simulation.
-
-### Substrate Parameters
+The antenna was designed for operation near 915 MHz using a standard two-layer FR-4 PCB structure.
 
 | Parameter | Value |
 |---|---|
-| Material | Shengyi S1000H TG150 |
-| Relative permittivity | 4.6 |
-| Loss tangent | 0.011 |
-| Nominal board thickness | 1.6 mm |
-| Modeled dielectric thickness | 1.53 mm |
-| Copper thickness | Approximately 35 µm (1 oz) |
-| PCB layers | 2 |
+| Target Frequency | 915 MHz |
+| Antenna Type | Rectangular Microstrip Patch |
+| Feeding Method | Inset-Fed Microstrip |
+| Target Input Impedance | 50 Ω |
+| Substrate | Shengyi S1000H / TG150 FR-4 |
+| Relative Permittivity | Approximately 4.6 |
+| Loss Tangent | Approximately 0.011 |
+| Substrate Thickness | Approximately 1.53 mm |
+| Copper Thickness | 1 oz |
+| PCB Layers | 2 |
 
-The dielectric properties were based on published values near 1 GHz.
+### Analytical Design
 
-Because actual substrate properties and fabricated layer thicknesses may differ from the modeled values, some resonant-frequency shift is expected during physical testing.
+The initial patch dimensions were calculated using the transmission-line model of a rectangular microstrip antenna.
 
----
+The patch width was estimated using:
 
-## 4. Inset-Fed Impedance Matching
+\[
+W = \frac{c}{2f_r}\sqrt{\frac{2}{\epsilon_r+1}}
+\]
 
-One of the primary design challenges was matching the antenna input impedance to a standard **50-ohm RF feed line**.
+The effective dielectric constant was approximated by:
 
-A rectangular patch generally exhibits a relatively high input resistance near its radiating edge.
+\[
+\epsilon_{eff} =
+\frac{\epsilon_r+1}{2}
++
+\frac{\epsilon_r-1}{2}
+\left(1+\frac{12h}{W}\right)^{-1/2}
+\]
 
-Several feeding methods were considered:
+The effective patch length was then calculated using:
 
-- Coaxial probe feeding
-- Quarter-wave impedance transformer
-- Inset microstrip feeding
+\[
+L_{eff} = \frac{c}{2f_r\sqrt{\epsilon_{eff}}}
+\]
 
-### Why Inset Feeding?
+Fringing fields were accounted for using the length extension:
 
-An inset-fed structure was selected because it allows the patch and microstrip feed to be implemented on the same copper layer.
+\[
+\frac{\Delta L}{h} =
+0.412
+\frac{(\epsilon_{eff}+0.3)(W/h+0.264)}
+{(\epsilon_{eff}-0.258)(W/h+0.8)}
+\]
 
-This simplifies PCB fabrication and provides a convenient way to adjust the input impedance.
+The physical patch length was estimated as:
 
-Moving the feed point inward from the radiating edge changes the local input resistance.
+\[
+L = L_{eff}-2\Delta L
+\]
 
-The main matching parameters were:
+These calculations provided the initial dimensions for electromagnetic simulation.
 
-- **Feed width:** Controls the characteristic impedance of the microstrip transmission line.
-- **Inset depth:** Adjusts the feed-point resistance.
-- **Inset gap:** Influences local coupling and the impedance match.
-
-The initial feed geometry was calculated analytically and then refined in HFSS.
-
-### Final Feed Geometry
-
-| Parameter | Final Value |
-|---|---:|
-| Feed-line width | 2.77 mm |
-| Inset depth | 25.45 mm |
-| Inset gap | 1.39 mm |
-| Target feed impedance | 50 ohms |
-
----
-
-## 5. Ansys HFSS Electromagnetic Simulation
-
-After completing the analytical design, the antenna geometry was implemented in **Ansys HFSS**.
-
-The HFSS Antenna Toolkit was used to establish the initial rectangular inset-fed patch geometry.
-
-A custom dielectric material was defined using the selected substrate properties.
-
-The full-wave simulation accounts for effects that are not fully represented in the analytical equations, including:
-
-- Finite substrate and ground-plane dimensions
-- Electromagnetic fringing fields
-- Dielectric losses
-- Conductor geometry
-- Feed discontinuities
-- Electromagnetic radiation into the surrounding region
-
-### Resonant Frequency Optimization
-
-The initial valid HFSS simulation produced a resonance near:
-
-**873.4 MHz, with S11 approximately -11.6 dB.**
-
-This resonance was below the 915 MHz target.
-
-Because the patch's resonant frequency depends strongly on its effective resonant length, the patch length was adjusted to move the resonance toward the target frequency.
-
-The feed and inset geometry were also refined to improve the impedance match.
-
-### Final HFSS Results
-
-| Parameter | Final Result |
-|---|---:|
-| Target frequency | 915 MHz |
-| Simulated resonant frequency | 919.6 MHz |
-| Return loss (S11) | -16.92 dB |
-| Resonant frequency deviation | +0.50% |
-| Reflection coefficient magnitude | Approximately 0.143 |
-| Reflected power at resonance | Approximately 2.0% |
-| VSWR at resonance | Approximately 1.33:1 |
-
-The simulated antenna resonated approximately **4.6 MHz above the target frequency**.
-
-The final S11 value of **-16.92 dB** indicates a reasonably strong simulated impedance match at resonance.
-
-The difference between the analytical prediction and the HFSS result illustrates the importance of refining idealized antenna equations using full-wave electromagnetic simulation.
+An inset-fed microstrip transmission line was selected to provide an impedance match near 50 Ω without requiring an external matching network.
 
 ---
 
-## 6. Final Antenna Geometry
+## 2. Electromagnetic Simulation — Ansys HFSS
 
-The final simulated dimensions were:
+The antenna was modeled using Ansys HFSS to investigate its resonant frequency, impedance matching, and electromagnetic behavior.
 
-| Parameter | Analytical Design | Final HFSS Design |
-|---|---:|---:|
-| Patch length | 76.23 mm | 75.30 mm |
-| Patch width | 97.90 mm | 98.00 mm |
-| Feed width | 2.85 mm | 2.77 mm |
-| Inset depth | 21.63 mm | 25.45 mm |
-| Inset gap | Simulation-tuned | 1.39 mm |
-| Dielectric thickness | 1.53 mm | 1.53 mm |
-| Substrate length | Design-dependent | 234.4 mm |
-| Substrate width | Design-dependent | 156.0 mm |
+The initial analytical dimensions provided a starting point, but additional optimization was necessary to approach the desired 915 MHz operating frequency.
 
-The antenna geometry was selected based on the final impedance-matching and resonant-frequency results.
+The patch length and inset-feed geometry were adjusted to improve the antenna's resonance and input reflection coefficient.
+
+### Simulation Process
+
+1. Created the rectangular patch, dielectric substrate, and ground plane.
+2. Modeled the inset-fed microstrip transmission line.
+3. Assigned material properties and electromagnetic boundaries.
+4. Configured the excitation and frequency sweep.
+5. Evaluated the input reflection coefficient, S11.
+6. Adjusted the antenna geometry to improve resonance and impedance matching.
+
+### Initial Optimization
+
+An earlier design iteration achieved:
+
+| Parameter | Result |
+|---|---|
+| Simulated Resonant Frequency | 919.6 MHz |
+| Simulated S11 | −16.92 dB |
+| Patch Length | 7.53 cm |
+
+This demonstrated that the analytical design and geometric optimization could produce a resonance close to the target frequency.
+
+### Simulation Used for Experimental Comparison
+
+The HFSS results used for the final comparison with the fabricated antenna showed:
+
+| Parameter | Result |
+|---|---|
+| Simulated Resonant Frequency | 910.38 MHz |
+| Simulated S11 Minimum | −11.64 dB |
+
+These results were subsequently compared with the physical antenna measurements.
+
+### HFSS Model
+
+![HFSS Antenna Model](images/hfss_model.png)
+
+*Figure 1. Three-dimensional HFSS model of the inset-fed microstrip patch antenna.*
+
+### Simulated S11
+
+![HFSS S11 Simulation](images/hfss_s11.png)
+
+*Figure 2. Simulated input reflection coefficient obtained using Ansys HFSS.*
 
 ---
 
-## 7. PCB Design in Altium Designer
+## 3. PCB Design and Fabrication
 
-Following HFSS optimization, the antenna geometry was transferred into **Altium Designer** for PCB implementation.
+Following the simulation stage, the antenna was implemented as a two-layer PCB using Altium Designer.
 
-The design uses a two-layer PCB structure consisting of:
+The PCB layout included the rectangular radiating patch, inset-fed microstrip transmission line, ground plane, and edge-mount SMA connector.
 
-- **Top copper layer:** Radiating patch and inset-fed microstrip transmission line
-- **Bottom copper layer:** RF ground plane
-- **Dielectric substrate:** Shengyi S1000H TG150
-
-The PCB design was developed to preserve the optimized antenna dimensions while preparing the structure for eventual fabrication.
+Particular attention was given to maintaining the intended transmission-line geometry and providing a reliable ground connection at the SMA interface.
 
 ### PCB Design Considerations
 
-Important factors included:
+- Maintained the antenna geometry established during simulation.
+- Designed the microstrip feed for approximately 50 Ω characteristic impedance.
+- Incorporated an edge-mount SMA connector for RF measurements.
+- Added grounding connections and vias near the connector.
+- Prepared manufacturing files for PCB fabrication.
 
-- Maintaining the patch dimensions from HFSS
-- Preserving the calculated 50-ohm feed-line width
-- Accurately positioning the inset feed
-- Accounting for the substrate thickness and dielectric properties
-- Considering the transition between the microstrip line and an RF connector
-- Preparing copper and solder-mask geometry for fabrication
+### Altium PCB Layout
 
-The PCB layout represents the next step toward transitioning the simulated antenna into a physical RF system.
+![Altium PCB Layout](images/altium_layout.png)
 
-**Current status:** The PCB layout has been completed in Altium Designer, but fabrication and experimental validation remain pending.
+*Figure 3. Altium Designer PCB layout showing the antenna geometry, feed line, and SMA connector.*
+
+### Fabricated Antennas
+
+Five antenna PCBs were manufactured and assembled with SMA connectors.
+
+![Fabricated Patch Antennas](images/fabricated_antennas.jpg)
+
+*Figure 4. Five fabricated 915 MHz microstrip patch antennas with edge-mount SMA connectors.*
+
+Fabricating multiple boards provided additional hardware for repeated measurements and antenna-to-antenna transmission testing.
 
 ---
 
-## 8. Engineering Results and Lessons Learned
+## 4. Experimental S11 Measurements
 
-This project demonstrated several important principles of RF and antenna design.
+After fabrication and assembly, the antenna was characterized using a NanoVNA-H vector network analyzer.
 
-### Analytical Design vs. Electromagnetic Simulation
+The primary objective was to measure the antenna's input reflection coefficient and compare its resonant behavior with the HFSS simulation.
 
-Analytical equations provide useful initial dimensions, but they cannot fully account for the electromagnetic behavior of a finite PCB antenna.
+S11 describes the reflection coefficient at the antenna input. It is useful for evaluating how effectively power is transferred from a 50 Ω source into the antenna.
 
-HFSS was necessary to refine the resonant frequency and impedance match.
+The reflection coefficient is related to the input impedance by:
 
-### Resonant Frequency Tuning
+\[
+\Gamma = \frac{Z_{in}-Z_0}{Z_{in}+Z_0}
+\]
 
-The simulated resonant frequency was sensitive to patch length.
+where:
 
-Adjusting the resonant dimension helped move the antenna from approximately 873.4 MHz to 919.6 MHz.
+- \(Z_{in}\) is the antenna input impedance.
+- \(Z_0\) is the reference impedance, typically 50 Ω.
+
+The logarithmic magnitude of S11 is expressed as:
+
+\[
+S_{11}(dB)=20\log_{10}|\Gamma|
+\]
+
+More negative S11 values indicate less reflected power and improved impedance matching.
+
+### Measurement Procedure
+
+1. Connected the NanoVNA-H to the antenna through an RF coaxial cable.
+2. Calibrated the VNA for reflection measurements.
+3. Performed a frequency sweep around the intended operating band.
+4. Identified the frequency corresponding to the minimum S11 magnitude.
+5. Exported the measured data for comparison with the HFSS simulation.
+
+### Measured Results
+
+| Parameter | Measured Result |
+|---|---|
+| Target Frequency | 915 MHz |
+| Measured Resonant Frequency | 909.84 MHz |
+| Measured S11 Minimum | −9.28 dB |
+| Difference from Target | −5.16 MHz |
+
+The fabricated antenna exhibited a clear resonance near the intended operating frequency.
+
+Although the measured S11 minimum was not as low as the simulated result, the antenna demonstrated a recognizable resonant response.
+
+---
+
+## 5. Simulation vs. Measurement
+
+One of the main objectives of this project was to evaluate how closely the physical antenna matched its electromagnetic simulation.
+
+### S11 Comparison
+
+![Simulated vs Measured S11](images/s11_comparison.png)
+
+*Figure 5. Comparison of simulated and measured S11 responses for the fabricated patch antenna.*
+
+### Results Summary
+
+| Parameter | HFSS Simulation | Measurement |
+|---|---|---|
+| Resonant Frequency | 910.38 MHz | 909.84 MHz |
+| Minimum S11 | −11.64 dB | −9.28 dB |
+| Difference from 915 MHz | −4.62 MHz | −5.16 MHz |
+
+The difference between the simulated and measured resonant frequencies was:
+
+\[
+\Delta f = |910.38-909.84| = 0.54\text{ MHz}
+\]
+
+This corresponds to a relative difference of approximately:
+
+\[
+\frac{0.54}{910.38}\times100\%
+\approx 0.059\%
+\]
+
+The close agreement in resonant frequency suggests that the physical antenna's resonant behavior was reasonably well represented by the simulation.
+
+However, the measured impedance match was weaker than predicted.
+
+### Discussion
+
+Several factors may contribute to differences between simulation and measurement:
+
+- Manufacturing tolerances in the PCB geometry.
+- Variations in the substrate dielectric properties.
+- SMA connector and solder-joint parasitics.
+- Differences between the modeled and physical feed structure.
+- Measurement setup and calibration uncertainty.
+- Nearby objects and environmental coupling.
+
+The resonant frequency agreement was encouraging, but the difference in S11 magnitude indicates that the feed and impedance-matching behavior could benefit from further investigation.
+
+An important lesson from this stage was that accurately predicting resonant frequency does not necessarily guarantee an equally accurate impedance match.
+
+---
+
+## 6. Antenna-to-Antenna Transmission Testing (S21)
+
+In addition to measuring S11, a transmission experiment was performed using two fabricated patch antennas.
+
+The purpose of this experiment was to observe RF transmission between the antennas and evaluate the frequency-dependent received signal.
+
+S21 represents the forward transmission coefficient between two measurement ports:
+
+\[
+S_{21}(dB)=20\log_{10}|S_{21}|
+\]
+
+For this experiment, the measured S21 includes the combined effects of antenna coupling, propagation loss, antenna orientation, impedance mismatch, and the measurement environment.
+
+### Transmission Measurement
+
+![Measured S21](images/s21_measurement.png)
+
+*Figure 6. Measured antenna-to-antenna S21 response using the fabricated patch antennas.*
+
+### Results
+
+The measured transmission response showed a peak of approximately:
+
+**S21 ≈ −14.27 dB near 910 MHz**
+
+The transmission peak occurred in the same general frequency region as the antenna's measured resonance.
+
+This provided an additional experimental demonstration of RF transmission between the fabricated antennas.
+
+### Interpretation
+
+The S21 measurement demonstrated a frequency-dependent transmission response between the two antennas.
+
+However, the measured value should not be interpreted as the gain of an individual antenna.
+
+A calibrated antenna gain measurement would require additional information and a controlled measurement setup, including known antenna separation, orientation, reference antennas, and environmental conditions.
+
+This experiment served as an initial communication-link test rather than a complete antenna radiation characterization.
+
+---
+
+## 7. Results and Key Takeaways
+
+The project successfully progressed through the major stages of antenna development:
+
+- Completed analytical calculations for a 915 MHz rectangular microstrip patch antenna.
+- Developed and optimized the antenna model using Ansys HFSS.
+- Created a manufacturable two-layer PCB using Altium Designer.
+- Fabricated and assembled five physical antennas.
+- Performed S11 measurements using a NanoVNA-H.
+- Compared experimental results with electromagnetic simulation.
+- Measured antenna-to-antenna S21 transmission.
+
+### Key Results
+
+| Metric | Result |
+|---|---|
+| Target Frequency | 915 MHz |
+| Simulated Resonance | 910.38 MHz |
+| Measured Resonance | 909.84 MHz |
+| Resonance Difference | 0.54 MHz |
+| Simulated S11 Minimum | −11.64 dB |
+| Measured S11 Minimum | −9.28 dB |
+| Measured S21 Peak | Approximately −14.27 dB |
+
+### Engineering Lessons
+
+The most valuable aspect of this project was gaining experience with the complete RF hardware development process.
+
+Simulation provided a useful prediction of the antenna's resonant frequency, but experimental testing revealed differences in impedance matching that were not fully captured by the model.
+
+The project also demonstrated the importance of PCB manufacturing tolerances, connector implementation, calibration, and repeatable measurement procedures.
+
+These results provide a foundation for improving the design and developing more advanced RF communication systems.
+
+---
+
+## 8. Future Improvements
+
+Several opportunities remain for expanding the project.
 
 ### Impedance Matching
 
-The position and geometry of the inset feed significantly affected the input reflection coefficient.
+Investigate the difference between simulated and measured S11 and improve the feed geometry or matching network to reduce reflections near 915 MHz.
 
-Refining the feed dimensions improved the simulated match to approximately -16.92 dB.
+### Radiation Pattern Measurements
 
-### PCB Implementation
+Develop a controlled antenna measurement setup using a rotating platform or anechoic chamber to characterize the radiation pattern.
 
-The project provided practical experience transferring a simulated RF structure into a PCB layout.
+### Gain and Efficiency Characterization
 
-This required attention to physical dimensions, substrate assumptions, feed geometry, and manufacturability.
+Perform additional measurements to estimate antenna gain and investigate radiation efficiency.
 
----
+### SDR Integration
 
-## 9. Engineering Skills Demonstrated
+Use a software-defined radio to receive and analyze signals transmitted between the fabricated antennas.
 
-| Skill | Application |
-|---|---|
-| RF Engineering | Resonance, impedance matching, and antenna design |
-| Antenna Theory | Rectangular patch resonance and fringing-field analysis |
-| Electromagnetic Simulation | Ansys HFSS modeling and full-wave analysis |
-| Microstrip Transmission Lines | 50-ohm feed design and inset matching |
-| PCB Design | Two-layer RF layout in Altium Designer |
-| Engineering Optimization | Iterative tuning of resonant frequency and feed geometry |
-| Simulation Analysis | S11, VSWR, reflection coefficient, and frequency deviation |
-| Technical Documentation | Analytical calculations, simulation results, and technical reporting |
+### Phased Array Development
+
+Apply the experience gained from this project toward developing a multi-element phased array with electronically controlled beam steering.
 
 ---
 
-## 10. Future Work
+## Project Status
 
-The next stage of this project is to fabricate the PCB and experimentally verify the antenna's RF performance.
+**Completed:**
+- Analytical antenna design
+- HFSS simulation and optimization
+- PCB layout and fabrication
+- SMA connector assembly
+- S11 measurement and simulation comparison
+- Initial antenna-to-antenna S21 testing
 
-### Planned Development
-
-1. **PCB Fabrication**
-   - Verify the final manufacturing stackup.
-   - Review fabrication files and RF connector geometry.
-   - Manufacture the two-layer antenna PCB.
-
-2. **VNA Measurements**
-   - Measure S11 using a NanoVNA or equivalent vector network analyzer.
-   - Identify the measured resonant frequency.
-   - Determine the -10 dB impedance bandwidth.
-   - Compare experimental performance against the HFSS model.
-
-3. **Wireless Communication Testing**
-   - Fabricate or obtain a second antenna.
-   - Establish a short-range wireless link.
-   - Investigate the behavior of the antenna in a practical communication system.
-
-4. **Digital Modulation**
-   - Explore on-off keying (OOK), BPSK, and QPSK.
-   - Investigate baseband signal generation and RF transmission.
-
-5. **Advanced Antenna Development**
-   - Explore alternative printed antenna geometries.
-   - Apply the lessons learned to future antenna arrays and beamforming systems.
-
----
-
-## Tools and Technologies
-
-- Ansys HFSS
-- Altium Designer
-- Microstrip Antenna Theory
-- RF Impedance Matching
-- Electromagnetic Simulation
-- PCB Design
-- S-Parameter Analysis
+**Future Work:**
+- Impedance matching improvements
+- Radiation pattern characterization
+- SDR-based communication experiments
+- Multi-element phased array implementation
 
 ---
 
 ## Author
 
-**Josiah Germain**  
+**Josiah Germain**
+
 Electrical Engineering — University of Houston
 
-[GitHub Profile](https://github.com/jgermain)
+Focus Areas: RF Engineering, Antenna Design, Microwave Engineering, and Wireless Communications
