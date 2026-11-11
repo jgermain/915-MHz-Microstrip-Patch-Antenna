@@ -174,7 +174,7 @@ Particular attention was given to maintaining the intended transmission-line geo
 
 Five antenna PCBs were manufactured and assembled with SMA connectors.
 
-![Fabricated Patch Antennas](Images/Antennas.jpg)
+![Fabricated Patch Antennas](Images/Antennas.png)
 
 *Figure 4. Five fabricated 915 MHz microstrip patch antennas with edge-mount SMA connectors.*
 
