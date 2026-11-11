@@ -238,7 +238,7 @@ One of the main objectives of this project was to evaluate how closely the physi
 
 ### S11 Comparison
 
-![Simulated vs Measured S11](Images/S11.pdf)
+![Simulated vs Measured S11](Images/S11.jpg)
 
 *Figure 5. Comparison of simulated and measured S11 responses for the fabricated patch antenna.*
 
