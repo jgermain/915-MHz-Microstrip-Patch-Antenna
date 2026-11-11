@@ -174,7 +174,7 @@ Particular attention was given to maintaining the intended transmission-line geo
 
 Five antenna PCBs were manufactured and assembled with SMA connectors.
 
-![Fabricated Patch Antennas](images/fabricated_antennas.jpg)
+![Fabricated Patch Antennas](Pics/Antennas.jpg)
 
 *Figure 4. Five fabricated 915 MHz microstrip patch antennas with edge-mount SMA connectors.*
 
@@ -238,7 +238,7 @@ One of the main objectives of this project was to evaluate how closely the physi
 
 ### S11 Comparison
 
-![Simulated vs Measured S11](images/s11_comparison.png)
+![Simulated vs Measured S11](images/S11.png)
 
 *Figure 5. Comparison of simulated and measured S11 responses for the fabricated patch antenna.*
 
@@ -300,7 +300,7 @@ For this experiment, the measured S21 includes the combined effects of antenna c
 
 ### Transmission Measurement
 
-![Measured S21](images/s21_measurement.png)
+![Measured S21](images/S21.png)
 
 *Figure 6. Measured antenna-to-antenna S21 response using the fabricated patch antennas.*
 
