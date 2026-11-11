@@ -174,7 +174,7 @@ Particular attention was given to maintaining the intended transmission-line geo
 
 Five antenna PCBs were manufactured and assembled with SMA connectors.
 
-![Fabricated Patch Antennas](Images/Antennas.png)
+![Fabricated Patch Antennas](Images/Antennas.jpeg)
 
 *Figure 4. Five fabricated 915 MHz microstrip patch antennas with edge-mount SMA connectors.*
 
@@ -238,7 +238,7 @@ One of the main objectives of this project was to evaluate how closely the physi
 
 ### S11 Comparison
 
-![Simulated vs Measured S11](Images/S11.png)
+![Simulated vs Measured S11](Images/S11.pdf)
 
 *Figure 5. Comparison of simulated and measured S11 responses for the fabricated patch antenna.*
 
