@@ -136,13 +136,13 @@ These results were subsequently compared with the physical antenna measurements.
 
 ### HFSS Model
 
-![HFSS Antenna Model](images/hfss_model.png)
+![HFSS Antenna Model](Images/Patch_Antenna_Simulation.png)
 
 *Figure 1. Three-dimensional HFSS model of the inset-fed microstrip patch antenna.*
 
 ### Simulated S11
 
-![HFSS S11 Simulation](images/hfss_s11.png)
+![HFSS S11 Simulation](Images/Patch_Antenna_S11.png)
 
 *Figure 2. Simulated input reflection coefficient obtained using Ansys HFSS.*
 
@@ -166,7 +166,7 @@ Particular attention was given to maintaining the intended transmission-line geo
 
 ### Altium PCB Layout
 
-![Altium PCB Layout](images/altium_layout.png)
+![Altium PCB Layout](Images/PCB_3D_View.png)
 
 *Figure 3. Altium Designer PCB layout showing the antenna geometry, feed line, and SMA connector.*
 
@@ -174,7 +174,7 @@ Particular attention was given to maintaining the intended transmission-line geo
 
 Five antenna PCBs were manufactured and assembled with SMA connectors.
 
-![Fabricated Patch Antennas](Pics/Antennas.jpg)
+![Fabricated Patch Antennas](Images/Antennas.jpg)
 
 *Figure 4. Five fabricated 915 MHz microstrip patch antennas with edge-mount SMA connectors.*
 
@@ -238,7 +238,7 @@ One of the main objectives of this project was to evaluate how closely the physi
 
 ### S11 Comparison
 
-![Simulated vs Measured S11](images/S11.png)
+![Simulated vs Measured S11](Images/S11.png)
 
 *Figure 5. Comparison of simulated and measured S11 responses for the fabricated patch antenna.*
 
@@ -300,7 +300,7 @@ For this experiment, the measured S21 includes the combined effects of antenna c
 
 ### Transmission Measurement
 
-![Measured S21](images/S21.png)
+![Measured S21](Images/S21.png)
 
 *Figure 6. Measured antenna-to-antenna S21 response using the fabricated patch antennas.*
 
